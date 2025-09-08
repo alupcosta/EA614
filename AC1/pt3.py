@@ -22,17 +22,11 @@ brir4 = (brir4 / np.ptp(brir4, axis=0))
 # Abre o áudio
 audio, fs = sf.read('AC1/Áudios/Canon_Violin.wav')
 
-# Calcula os fatores de interpolação
+# Realiza interpolação bilinear para estimar a BRIR no ponto 5
 tx = ponto5_x / largura
 ty = ponto5_y / altura
-
-# Interpola na borda inferior (entre P4 e P1)
 i1 = brir4 * (1 - tx) + brir1 * tx
-
-# Interpola na borda superior (entre P3 e P2)
 i2 = brir3 * (1 - tx) + brir2 * tx
-
-# Interpola entre os dois resultados intermediários
 brir5_interpolada = i1 * (1 - ty) + i2 * ty
 
 # Plota a resposta ao impulso estimada para o ponto 5
