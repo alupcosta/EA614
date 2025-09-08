@@ -19,7 +19,7 @@ right_channel = np.convolve(inst1, brir[:corte, 1], mode='full')
 # Une os canais
 stereo_audio = np.column_stack((left_channel, right_channel))
 
-# Transforma em audio
-sf.write('AC1/Saídas/Canon_Violin_SEC1_Left.wav', left_channel, fs)
-sf.write('AC1/Saídas/Canon_Violin_SEC1_Right.wav', right_channel, fs)
-sf.write('AC1/Saídas/Canon_Violin_SEC1_Stereo.wav', stereo_audio, fs)
+# Transforma em áudio
+sf.write('AC1/Saídas/Parte1_Esquerdo.wav', left_channel, fs)
+sf.write('AC1/Saídas/Parte1_Direito.wav', right_channel, fs)
+sf.write('AC1/Saídas/Parte1_Estereo.wav', stereo_audio, fs)
