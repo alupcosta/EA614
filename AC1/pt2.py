@@ -5,11 +5,9 @@ import soundfile as sf
 
 corte = 15000 
 
-# Abre e normaliza brir da Fonte 1
+# Abre e normaliza as brir's
 brir1 = np.genfromtxt('AC1/Medições/SEC_1.csv', delimiter=',')
 brir1 = (brir1 / np.ptp(brir1, axis=0))
-
-# Abre e normaliza brir da Fonte 2
 brir2 = np.genfromtxt('AC1/Medições/SEC_2.csv', delimiter=',') # Use um arquivo de medição oposto
 brir2 = (brir2 / np.ptp(brir2, axis=0))
 
