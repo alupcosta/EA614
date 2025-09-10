@@ -30,5 +30,17 @@ final_right = right1 + right2
 # Une os canais
 final_stereo = np.column_stack((final_left, final_right))
 
-# Transforma em áudio
-sf.write('AC1/Saídas/Parte2_Duas_Fontes.wav', final_stereo, fs)
+# Salva o áudio final
+sf.write('AC1/Saídas/Parte2_Estereo.wav', final_stereo, fs)
+
+# Plota o áudio gerado
+t_audio = np.arange(len(final_left)) / fs
+plt.figure(figsize=(12, 5))
+plt.plot(t_audio, final_left, label='Canal Esquerdo', color='blue')
+plt.plot(t_audio, final_right, label='Canal Direito', color='red')
+plt.title('Áudio Combinado - Parte 2')
+plt.xlabel('Tempo (s)')
+plt.ylabel('Amplitude')
+plt.grid(True)
+plt.legend()
+plt.savefig('AC1/Saídas/Parte2_Audio.png', dpi=300, bbox_inches='tight')

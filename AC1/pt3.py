@@ -32,19 +32,31 @@ brir5_interpolada = i1 * (1 - ty) + i2 * ty
 # Plota a resposta ao impulso estimada para o ponto 5
 t = np.arange(0, len(brir5_interpolada[:corte, 0])) / fs
 plt.figure(figsize=(12, 5))
-plt.plot(t, brir5_interpolada[:corte, 0], label='Canal Esquerdo')
-plt.plot(t, brir5_interpolada[:corte, 1], label='Canal Direito')
-plt.title('Formato da Resposta ao Impulso Estimada')
+plt.plot(t, brir5_interpolada[:corte, 0], label='Canal Esquerdo (Interpolado)')
+plt.plot(t, brir5_interpolada[:corte, 1], label='Canal Direito (Interpolado)')
+plt.title('BRIR Interpolada para o Ponto 5')
 plt.xlabel('Tempo (s)')
 plt.ylabel('Amplitude')
-plt.grid(True, linestyle='--', alpha=0.6)
 plt.legend()
-plt.savefig('AC1/Saídas/Parte3_Interpolacao.png', dpi=300, bbox_inches='tight')
+plt.grid(True)
+plt.savefig('AC1/Saídas/Parte3_BRIR_Interpolada.png', dpi=300, bbox_inches='tight')
 
-# Realiza convolução
-final_left = np.convolve(audio, brir5_interpolada[:corte, 0], mode='full')
-final_right = np.convolve(audio, brir5_interpolada[:corte, 1], mode='full')
-final_stereo = np.column_stack((final_left, final_right))
+# Realiza a convolução com a BRIR interpolada
+audio_interpolado_L = np.convolve(audio, brir5_interpolada[:corte, 0], mode='full')
+audio_interpolado_R = np.convolve(audio, brir5_interpolada[:corte, 1], mode='full')
+audio_interpolado_stereo = np.column_stack((audio_interpolado_L, audio_interpolado_R))
 
-# Transforma em áudio
-sf.write('AC1/Saídas/Parte3_Interpolacao.wav', final_stereo, fs)
+# Salva o áudio convolucionado
+sf.write('AC1/Saídas/Parte3_Audio_Interpolado.wav', audio_interpolado_stereo, fs)
+
+# Plota o áudio gerado
+t_audio = np.arange(len(audio_interpolado_L)) / fs
+plt.figure(figsize=(12, 5))
+plt.plot(t_audio, audio_interpolado_L, label='Canal Esquerdo (Interpolado)', color='blue')
+plt.plot(t_audio, audio_interpolado_R, label='Canal Direito (Interpolado)', color='red')
+plt.title('Áudio Convolucionado com BRIR Interpolada - Parte 3')
+plt.xlabel('Tempo (s)')
+plt.ylabel('Amplitude')
+plt.grid(True)
+plt.legend()
+plt.savefig('AC1/Saídas/Parte3_Audio.png', dpi=300, bbox_inches='tight')
