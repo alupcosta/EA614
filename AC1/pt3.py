@@ -52,8 +52,8 @@ sf.write('AC1/Saídas/Parte3_Audio_Interpolado.wav', audio_interpolado_stereo, f
 # Plota o áudio gerado
 t_audio = np.arange(len(audio_interpolado_L)) / fs
 plt.figure(figsize=(12, 5))
-plt.plot(t_audio, audio_interpolado_L, label='Canal Esquerdo (Interpolado)', color='blue')
-plt.plot(t_audio, audio_interpolado_R, label='Canal Direito (Interpolado)', color='red')
+plt.plot(t_audio, audio_interpolado_L, label='Canal Esquerdo (Interpolado)')
+plt.plot(t_audio, audio_interpolado_R, label='Canal Direito (Interpolado)')
 plt.title('Áudio Convolucionado com BRIR Interpolada - Parte 3')
 plt.xlabel('Tempo (s)')
 plt.ylabel('Amplitude')

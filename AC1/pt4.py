@@ -35,8 +35,8 @@ sf.write('AC1/Saídas/Parte4_Audio_Real.wav', audio_real_stereo, fs)
 # Plota o áudio gerado
 t_audio = np.arange(len(audio_real_L)) / fs
 plt.figure(figsize=(12, 5))
-plt.plot(t_audio, audio_real_L, label='Canal Esquerdo (Real)', color='blue')
-plt.plot(t_audio, audio_real_R, label='Canal Direito (Real)', color='red')
+plt.plot(t_audio, audio_real_L, label='Canal Esquerdo (Real)')
+plt.plot(t_audio, audio_real_R, label='Canal Direito (Real)')
 plt.title('Áudio Convolucionado com BRIR Real - Parte 4')
 plt.xlabel('Tempo (s)')
 plt.ylabel('Amplitude')
