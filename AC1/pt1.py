@@ -5,8 +5,8 @@ import soundfile as sf
 
 corte = 15000 
 
-# Abre o brir
-brir = np.genfromtxt('AC1/Medições/SEC_3.csv', delimiter=',')
+# Abre a brir
+brir = np.genfromtxt('AC1/Medições/SEC_1.csv', delimiter=',')
 
 # Abre áudio
 inst1, fs = sf.read('AC1/Áudios/Canon_Violin.wav') 
@@ -26,7 +26,7 @@ sf.write('AC1/Saídas/Parte1_Estereo.wav', stereo_audio, fs)
 # Plota o áudio gerado
 t_audio = np.arange(len(left_channel)) / fs
 plt.figure(figsize=(12, 5))
-plt.plot(t_audio, left_channel, label='Canal Esquerdo', alpha=0.7)
+plt.plot(t_audio, left_channel, label='Canal Esquerdo')
 plt.plot(t_audio, right_channel, label='Canal Direito')
 plt.title('Áudio Convolucionado - Parte 1')
 plt.xlabel('Tempo (s)')

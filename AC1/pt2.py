@@ -5,7 +5,7 @@ import soundfile as sf
 
 corte = 15000 
 
-# Abre e normaliza as brir's
+# Abre as brir's
 brir1 = np.genfromtxt('AC1/Medições/SEC_1.csv', delimiter=',')
 brir2 = np.genfromtxt('AC1/Medições/SEC_3.csv', delimiter=',')
 
